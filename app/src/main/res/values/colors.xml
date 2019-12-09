@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#27A1FF</color>
+    <color name="colorPrimaryDark">#77C4FF</color>
+    <color name="colorAccent">#B8E0FF</color>
+
+    <color name="colorPrimaryNight">#664D66</color>
+    <color name="colorPrimaryDarkNight">#7E657E</color>
+    <color name="colorAccentNight">#A28BA2</color>
+
+    <!-- Ring Colors-->
+    <color name="ringBlueOne">#27A1FF</color>
+    <color name="ringBlueTwo">#77C4FF</color>
+    <color name="ringBlueThree">#B8E0FF</color>
+    <color name="ringBlueFour">#E8F5FF</color>
+    <color name="ringBlueFive">#FFFFFF</color>
+
+    <!-- Ring Colors Dark-->
+    <color name="ringBlueOneDark">#664D66</color>
+    <color name="ringBlueTwoDark">#7E657E</color>
+    <color name="ringBlueThreeDark">#A28BA2</color>
+    <color name="ringBlueFourDark">#C2AEC2</color>
+    <color name="ringBlueFiveDark">#E3D3E3</color>
 </resources>
