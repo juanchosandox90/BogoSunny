@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import com.sandoval.bogosunny.R
+import com.sandoval.bogosunny.ui.about.AboutActivity
 import com.sandoval.bogosunny.ui.base.BaseActivity
 import com.sandoval.bogosunny.utils.ThemeUtils
 import dagger.android.AndroidInjection
@@ -63,7 +64,7 @@ class WeatherActivity : BaseActivity() {
                 true
             }
             R.id.about -> {
-                Toast.makeText(this, "About", Toast.LENGTH_LONG).show()
+                startActivity(AboutActivity.getStartIntent(this@WeatherActivity))
                 true
             }
             else -> super.onOptionsItemSelected(item)
