@@ -6,6 +6,9 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import com.sandoval.bogosunny.R
 import com.sandoval.bogosunny.ui.base.BaseActivity
 import com.sandoval.bogosunny.utils.ThemeUtils
@@ -46,5 +49,24 @@ class WeatherActivity : BaseActivity() {
         animation.repeatCount = ValueAnimator.INFINITE
         animation.repeatMode = ValueAnimator.REVERSE
         animation.start()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_weather_activity, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.saved_cities -> {
+                Toast.makeText(this, "Saved Cities", Toast.LENGTH_LONG).show()
+                true
+            }
+            R.id.about -> {
+                Toast.makeText(this, "About", Toast.LENGTH_LONG).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
