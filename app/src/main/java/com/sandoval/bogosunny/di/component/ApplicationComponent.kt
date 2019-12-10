@@ -1,6 +1,7 @@
 package com.sandoval.bogosunny.di.component
 
 import com.sandoval.bogosunny.BogoSunnyApplication
+import com.sandoval.bogosunny.di.module.ActivityBindingModule
 import com.sandoval.bogosunny.di.module.ApplicationModule
 import dagger.BindsInstance
 import dagger.Component
@@ -11,8 +12,9 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidSupportInjectionModule::class,
-        ApplicationModule::class
-        //TODO: NetworkModule, ViewModelModule, BindingModule
+        ApplicationModule::class,
+        ActivityBindingModule::class
+        //TODO: NetworkModule, ViewModelModule
     ]
 )
 interface ApplicationComponent {
