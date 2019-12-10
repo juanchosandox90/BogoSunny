@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.sandoval.bogosunny.ui.base.BaseActivity
+import com.sandoval.bogosunny.utils.CommonUtils
 
 abstract class BaseFragment : Fragment() {
 
@@ -27,11 +28,14 @@ abstract class BaseFragment : Fragment() {
     protected abstract fun setUp(view: View)
 
     fun showLoading() {
-        //TODO: Show loading using utils tools
+        hideLoading()
+        progressDialog = CommonUtils.showLoadingDialog(this.context!!)
     }
 
     fun hideLoading() {
-        //TODO: Hide loading using utils tools
+        if (progressDialog != null && progressDialog!!.isShowing) {
+            progressDialog!!.cancel()
+        }
     }
 
     fun showMessage(message: String?) {
