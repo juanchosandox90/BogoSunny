@@ -1,4 +1,4 @@
-package com.sandoval.bogosunny.ui
+package com.sandoval.bogosunny.ui.base
 
 import android.app.Dialog
 import android.content.res.Resources
