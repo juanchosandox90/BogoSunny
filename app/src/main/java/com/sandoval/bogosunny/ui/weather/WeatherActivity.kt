@@ -9,12 +9,14 @@ import android.util.DisplayMetrics
 import com.sandoval.bogosunny.R
 import com.sandoval.bogosunny.ui.base.BaseActivity
 import com.sandoval.bogosunny.utils.ThemeUtils
+import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.toolbar
 
 class WeatherActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         init()
