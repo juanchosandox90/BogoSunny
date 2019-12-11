@@ -79,7 +79,7 @@
         android:layout_marginTop="50dp"
         android:clickable="true"
         android:focusable="true"
-        app:backgroundTint="#eccd30"
+        app:backgroundTint="@color/sun_color"
         app:fabSize="normal" />
 
     <include

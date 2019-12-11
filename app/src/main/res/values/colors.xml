@@ -21,4 +21,6 @@
     <color name="ringBlueThreeDark">#A28BA2</color>
     <color name="ringBlueFourDark">#C2AEC2</color>
     <color name="ringBlueFiveDark">#E3D3E3</color>
+
+    <color name="sun_color">#ECCD30</color>
 </resources>
