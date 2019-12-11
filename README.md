@@ -12,4 +12,4 @@ Description Pending
 
 ### Color Palette
 
- ![Color Palette](color_palette.PNG)
+ ![Color Palette](color_palette.png)
