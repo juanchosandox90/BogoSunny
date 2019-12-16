@@ -1,4 +1,4 @@
-# BogoSunny
+# Colo Sunny
 
  ![Icon of the application](bogo_sunny_icon_02.png)
 
