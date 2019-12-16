@@ -79,6 +79,7 @@
         android:layout_marginTop="@dimen/margin_50dp"
         android:clickable="true"
         android:focusable="true"
+        app:maxImageSize="56dp"
         app:backgroundTint="@color/sun_color"
         app:fabSize="normal" />
 

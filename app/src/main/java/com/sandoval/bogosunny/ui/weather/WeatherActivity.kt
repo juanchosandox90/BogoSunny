@@ -66,6 +66,7 @@ class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsRespon
     private fun changeRings() {
         rings.setBackgroundResource(R.drawable.circular_rings_dark)
         sun_and_moon.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#FFFFFF"))
+        sun_and_moon.setImageDrawable(resources.getDrawable(R.drawable.moon_01))
         add_city_button.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#403C48"))
     }
 
