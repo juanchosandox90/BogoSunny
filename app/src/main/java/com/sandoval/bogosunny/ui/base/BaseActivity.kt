@@ -4,7 +4,6 @@ import android.app.Dialog
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.os.Build
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.sandoval.bogosunny.utils.CommonUtils

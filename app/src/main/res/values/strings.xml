@@ -1,5 +1,24 @@
 <resources>
-    <string name="app_name">Bogo Sunny</string>
+    <string name="app_name">Colo Sunny</string>
     <string name="saved_cities_menu">Saved Cities</string>
     <string name="about_title">About</string>
+    <string name="search_hint">Search</string>
+
+    <string-array name="top_places">
+        <item>Bogot\u00e1</item>
+        <item>Medellin</item>
+        <item>Cartagena</item>
+        <item>Barranquilla</item>
+        <item>Cali</item>
+        <item>Ibague</item>
+        <item>Armenia</item>
+        <item>Santa Marta</item>
+        <item>Rioacha</item>
+        <item>Tunja</item>
+        <item>Villavicencio</item>
+        <item>Monteria</item>
+        <item>Sincelejo</item>
+        <item>Valledupar</item>
+        <item>Bucaramanga</item>
+    </string-array>
 </resources>

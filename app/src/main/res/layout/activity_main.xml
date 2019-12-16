@@ -21,7 +21,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/dimen_0dp"
             android:layout_weight="1"
             android:background="@android:color/transparent">
 
@@ -31,7 +31,7 @@
         <FrameLayout
             android:id="@+id/data_container"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/dimen_0dp"
             android:layout_weight="1.2"
             android:orientation="vertical">
 
@@ -42,7 +42,7 @@
 
                 <View
                     android:layout_width="match_parent"
-                    android:layout_height="32dp"
+                    android:layout_height="@dimen/dime_32dp"
                     android:background="@android:color/transparent" />
 
                 <androidx.viewpager.widget.ViewPager
@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|center_horizontal"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/margin_4dp"
                 android:clickable="true"
                 android:focusable="true"
                 app:backgroundTint="@color/colorPrimary"
@@ -75,8 +75,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start|top"
-        android:layout_marginStart="-28dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="@dimen/margin_negative_28dp"
+        android:layout_marginTop="@dimen/margin_50dp"
         android:clickable="true"
         android:focusable="true"
         app:backgroundTint="@color/sun_color"
