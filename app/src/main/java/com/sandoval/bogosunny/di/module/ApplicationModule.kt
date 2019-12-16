@@ -13,12 +13,13 @@ import com.sandoval.bogosunny.data.db.room.AppDataBase
 import com.sandoval.bogosunny.di.ApplicationContext
 import dagger.Module
 import dagger.Provides
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Singleton
 
 @Module
 class ApplicationModule {
 
-    //TODO: Add eventually all the providers that will interact in the app: Api, DB, Room, DataManager, BaseUrl, RXComposite-disposable
+    //TODO: Add eventually all the providers that will interact in the app: Api, BaseUrl
 
     @Provides
     @ApplicationContext
@@ -29,6 +30,11 @@ class ApplicationModule {
     @Provides
     internal fun provideApplication(bogoSunnyApplication: BogoSunnyApplication): Application {
         return bogoSunnyApplication
+    }
+
+    @Provides
+    internal fun provideCompositeDisposable(): CompositeDisposable {
+        return CompositeDisposable()
     }
 
     @Provides

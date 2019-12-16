@@ -1,26 +1,34 @@
 package com.sandoval.bogosunny.ui.add_city
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.database.sqlite.SQLiteConstraintException
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sandoval.bogosunny.R
 import com.sandoval.bogosunny.ui.base.BaseActivity
 import dagger.android.AndroidInjection
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_add_city.*
+import timber.log.Timber
 import javax.inject.Inject
 
 class AddCityActivity : BaseActivity(), CityListAdapter.Callback {
 
     @Inject
-    lateinit var cityListAdapter: CityListAdapter
+    lateinit var compositeDisposable: CompositeDisposable
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var cityListAdapter: CityListAdapter
 
     private lateinit var allCityArrayList: MutableList<String>
     private lateinit var suggestionsArrayList: MutableList<String>
@@ -78,6 +86,30 @@ class AddCityActivity : BaseActivity(), CityListAdapter.Callback {
     }
 
     override fun onCityClick(city: String) {
-        Toast.makeText(this@AddCityActivity, "City Clicked", Toast.LENGTH_LONG).show()
+        showLoading()
+        compositeDisposable.add(
+            Observable.defer { Observable.just(addCityViewModel.addCity(city)) }
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    setResult(Activity.RESULT_OK)
+                    Timber.d("City Added: $city")
+                    finish()
+                }, {
+                    hideLoading()
+                    if (it is SQLiteConstraintException) {
+                        Timber.e("This city is already added.")
+                    } else {
+                        Timber.e(it.localizedMessage)
+                    }
+                    Timber.e(it)
+                })
+        )
+    }
+
+    override fun onDestroy() {
+        hideLoading()
+        compositeDisposable.dispose()
+        super.onDestroy()
     }
 }
