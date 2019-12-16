@@ -24,7 +24,6 @@ import com.sandoval.bogosunny.ui.about.AboutActivity
 import com.sandoval.bogosunny.ui.add_city.AddCityActivity
 import com.sandoval.bogosunny.ui.base.BaseActivity
 import com.sandoval.bogosunny.ui.saved_cities.SavedCitiesActivity
-import com.sandoval.bogosunny.utils.AppConstants
 import com.sandoval.bogosunny.utils.AppConstants.LOCATION_PERMISSION_REQUEST
 import com.sandoval.bogosunny.utils.AppConstants.REQUEST_ADD_CITY
 import com.sandoval.bogosunny.utils.AppConstants.REQUEST_CHECK_SETTINGS
@@ -33,10 +32,8 @@ import com.sandoval.bogosunny.utils.ThemeUtils
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.toolbar
-import org.greenrobot.eventbus.EventBus
 import timber.log.Timber
 import java.lang.Exception
-import java.util.jar.Manifest
 
 class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsResponse>,
     OnFailureListener {
