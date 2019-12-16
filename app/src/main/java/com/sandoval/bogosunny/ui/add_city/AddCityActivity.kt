@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sandoval.bogosunny.R
 import com.sandoval.bogosunny.ui.base.BaseActivity
@@ -17,9 +19,12 @@ class AddCityActivity : BaseActivity(), CityListAdapter.Callback {
 
     @Inject
     lateinit var cityListAdapter: CityListAdapter
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private lateinit var allCityArrayList: MutableList<String>
     private lateinit var suggestionsArrayList: MutableList<String>
+    private lateinit var addCityViewModel: AddCityViewModel
 
     companion object {
         fun getStartIntent(context: Context): Intent {
@@ -31,6 +36,12 @@ class AddCityActivity : BaseActivity(), CityListAdapter.Callback {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_city)
+
+        addCityViewModel = ViewModelProviders.of(
+            this,
+            viewModelFactory
+        )[AddCityViewModel::class.java]
+
         cityListAdapter.setCallBack(this@AddCityActivity)
         init()
     }
