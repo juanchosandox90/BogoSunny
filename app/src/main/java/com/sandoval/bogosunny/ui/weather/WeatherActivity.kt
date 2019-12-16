@@ -164,6 +164,7 @@ class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsRespon
         }
     }
 
+    @SuppressLint("MissingSuperCall")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (requestCode) {
             REQUEST_CHECK_SETTINGS -> when (resultCode) {
