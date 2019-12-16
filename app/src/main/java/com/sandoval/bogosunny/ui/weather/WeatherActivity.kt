@@ -21,8 +21,11 @@ import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
 import com.sandoval.bogosunny.R
 import com.sandoval.bogosunny.ui.about.AboutActivity
+import com.sandoval.bogosunny.ui.add_city.AddCityActivity
 import com.sandoval.bogosunny.ui.base.BaseActivity
+import com.sandoval.bogosunny.utils.AppConstants
 import com.sandoval.bogosunny.utils.AppConstants.LOCATION_PERMISSION_REQUEST
+import com.sandoval.bogosunny.utils.AppConstants.REQUEST_ADD_CITY
 import com.sandoval.bogosunny.utils.AppConstants.REQUEST_CHECK_SETTINGS
 import com.sandoval.bogosunny.utils.ThemeUtils
 import dagger.android.AndroidInjection
@@ -53,6 +56,12 @@ class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsRespon
         if (ThemeUtils.isNight())
             changeRings()
         animateSunAndMoon()
+
+        add_city_button.setOnClickListener {
+            startActivityForResult(
+                AddCityActivity.getStartIntent(this@WeatherActivity), REQUEST_ADD_CITY
+            )
+        }
     }
 
     private fun changeRings() {
