@@ -45,7 +45,7 @@ class CityListAdapter(private val cityArrayList: MutableList<String>) :
 
     fun addCities(suggestionArrayList: MutableList<String>) {
         cityArrayList.clear()
-        cityArrayList.addAll(suggestionArrayList)
+        cityArrayList.addAll(suggestionArrayList.sorted())
         notifyDataSetChanged()
     }
 
