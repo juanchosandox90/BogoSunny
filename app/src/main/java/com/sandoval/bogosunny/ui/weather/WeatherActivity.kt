@@ -23,10 +23,12 @@ import com.sandoval.bogosunny.R
 import com.sandoval.bogosunny.ui.about.AboutActivity
 import com.sandoval.bogosunny.ui.add_city.AddCityActivity
 import com.sandoval.bogosunny.ui.base.BaseActivity
+import com.sandoval.bogosunny.ui.saved_cities.SavedCitiesActivity
 import com.sandoval.bogosunny.utils.AppConstants
 import com.sandoval.bogosunny.utils.AppConstants.LOCATION_PERMISSION_REQUEST
 import com.sandoval.bogosunny.utils.AppConstants.REQUEST_ADD_CITY
 import com.sandoval.bogosunny.utils.AppConstants.REQUEST_CHECK_SETTINGS
+import com.sandoval.bogosunny.utils.AppConstants.REQUEST_REMOVE_CITY
 import com.sandoval.bogosunny.utils.ThemeUtils
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_main.*
@@ -193,7 +195,10 @@ class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsRespon
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.saved_cities -> {
-                Toast.makeText(this, "Saved Cities", Toast.LENGTH_LONG).show()
+                startActivityForResult(
+                    SavedCitiesActivity.getStartIntent(this@WeatherActivity),
+                    REQUEST_REMOVE_CITY
+                )
                 true
             }
             R.id.about -> {

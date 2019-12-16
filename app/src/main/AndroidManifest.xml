@@ -30,6 +30,10 @@
         <activity
             android:name=".ui.add_city.AddCityActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.saved_cities.SavedCitiesActivity"
+            android:label="Saved cities"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
