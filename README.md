@@ -1,5 +1,7 @@
 # BogoSunny
 
+ ![Icon of the application](bogo_sunny_icon_02.PNG)
+
 Weather Android Application
 
 ### Description
