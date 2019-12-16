@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.sandoval.bogosunny.ViewModelFactory
 import com.sandoval.bogosunny.di.ViewModelKey
 import com.sandoval.bogosunny.ui.add_city.AddCityViewModel
+import com.sandoval.bogosunny.ui.saved_cities.SavedCitiesViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -18,4 +19,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(AddCityViewModel::class)
     internal abstract fun postAddCityViewModel(addCityViewModel: AddCityViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SavedCitiesViewModel::class)
+    internal abstract fun postSavedCitiesViewModel(savedCitiesViewModel: SavedCitiesViewModel): ViewModel
 }
