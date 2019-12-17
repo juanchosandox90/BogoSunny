@@ -68,6 +68,12 @@ dependencies {
     testImplementation libs.JUnit
     androidTestImplementation libs.TestRunner
     androidTestImplementation libs.EspressoCore
+    //Rettrofit
+    implementation libs.Retrofit
+    implementation libs.RetrofitAdapter
+    implementation libs.RetrofitConverter
+    //Okhttp3
+    implementation libs.Okhttp3
 }
 
 apply plugin: 'com.google.gms.google-services'
