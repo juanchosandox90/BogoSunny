@@ -9,34 +9,55 @@ import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.location.Location
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
 import com.sandoval.bogosunny.R
+import com.sandoval.bogosunny.ViewModelFactory
+import com.sandoval.bogosunny.data.network.model.forecast.Forecast
+import com.sandoval.bogosunny.data.network.model.weather.CurrentWeather
 import com.sandoval.bogosunny.ui.about.AboutActivity
 import com.sandoval.bogosunny.ui.add_city.AddCityActivity
 import com.sandoval.bogosunny.ui.base.BaseActivity
 import com.sandoval.bogosunny.ui.saved_cities.SavedCitiesActivity
+import com.sandoval.bogosunny.ui.weather.currentLocation.CurrentLocationWeatherViewModel
 import com.sandoval.bogosunny.utils.AppConstants.LOCATION_PERMISSION_REQUEST
 import com.sandoval.bogosunny.utils.AppConstants.REQUEST_ADD_CITY
 import com.sandoval.bogosunny.utils.AppConstants.REQUEST_CHECK_SETTINGS
 import com.sandoval.bogosunny.utils.AppConstants.REQUEST_REMOVE_CITY
 import com.sandoval.bogosunny.utils.ThemeUtils
 import dagger.android.AndroidInjection
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.toolbar
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import timber.log.Timber
 import java.lang.Exception
+import javax.inject.Inject
 
 class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsResponse>,
     OnFailureListener {
+
+    @Inject
+    lateinit var compositeDisposable: CompositeDisposable
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    private lateinit var currentLocationWeatherViewModel: CurrentLocationWeatherViewModel
 
     private var locationRequest: LocationRequest? = null
     private var locationCallback: LocationCallback? = null
@@ -46,7 +67,63 @@ class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsRespon
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        currentLocationWeatherViewModel = ViewModelProviders.of(
+            this@WeatherActivity,
+            viewModelFactory
+        )[CurrentLocationWeatherViewModel::class.java]
         init()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onLatLonUpdate(location: Location) {
+        Timber.d("❤️ Got Location : ${location.latitude}, ${location.longitude}")
+
+        compositeDisposable.add(
+            currentLocationWeatherViewModel.getWeatherData(
+                location.latitude.toString(),
+                location.longitude.toString()
+            )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    displayCurrentWeather(it)
+                }, {
+                    Timber.e(it.localizedMessage)
+                })
+        )
+
+        compositeDisposable.add(
+            currentLocationWeatherViewModel.getForecastData(
+                location.latitude.toString(),
+                location.longitude.toString()
+            )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    displayForecast(it)
+                }, {
+                    Timber.e(it.localizedMessage)
+                })
+        )
+    }
+
+    private fun displayCurrentWeather(currentWeather: CurrentWeather) {
+        Timber.d("Weather Data ${currentWeather.weather}")
+    }
+
+    private fun displayForecast(forecast: Forecast) {
+        Timber.d("Weather Data ${forecast.list}")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
     }
 
     private fun init() {
@@ -144,6 +221,7 @@ class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsRespon
             override fun onLocationResult(locationResult: LocationResult?) {
                 locationResult ?: return
                 Timber.d("Location : ${locationResult.locations[0].latitude}, ${locationResult.locations[0].longitude} ")
+                EventBus.getDefault().post(locationResult.locations[0])
             }
         }
         fusedLocationClient = FusedLocationProviderClient(this@WeatherActivity)
@@ -207,4 +285,8 @@ class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsRespon
         }
     }
 
+    override fun onDestroy() {
+        compositeDisposable.dispose()
+        super.onDestroy()
+    }
 }

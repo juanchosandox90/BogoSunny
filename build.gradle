@@ -21,6 +21,8 @@ buildscript {
         junit_version = "4.12"
         test_runner_version = "1.2.0"
         espresso_version = "3.2.0"
+        retrofit_version = "2.5.0"
+        ok_http_version = "3.14.2"
 
         libs = [
                 //Kotlin
@@ -59,8 +61,12 @@ buildscript {
                 JUnit               : ('junit:junit:' + junit_version),
                 TestRunner          : ('androidx.test:runner:' + test_runner_version),
                 EspressoCore        : ('androidx.test.espresso:espresso-core:' + espresso_version),
-
-
+                //Rettrofit
+                Retrofit            : ('com.squareup.retrofit2:retrofit:' + retrofit_version),
+                RetrofitAdapter     : ('com.squareup.retrofit2:adapter-rxjava2:' + retrofit_version),
+                RetrofitConverter   : ('com.squareup.retrofit2:converter-gson:' + retrofit_version),
+                //Okhttp3
+                Okhttp3             : ('com.squareup.okhttp3:logging-interceptor:' + ok_http_version)
         ]
     }
     repositories {
