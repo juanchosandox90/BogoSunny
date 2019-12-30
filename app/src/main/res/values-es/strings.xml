@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Colo Sunny</string>
-    <string name="saved_cities_menu">Saved Cities</string>
-    <string name="about_title">About</string>
-    <string name="search_hint">Search</string>
-    <string name="rainy_string_main">Rain</string>
-    <string name="sunny_string_main">Sunny</string>
+    <string name="saved_cities_menu">Ciudades Guardadas</string>
+    <string name="about_title">Acerca de</string>
+    <string name="search_hint">Buscar</string>
+    <string name="rainy_string_main">Lluvia</string>
+    <string name="sunny_string_main">Soleado</string>
 
     <string-array name="top_places">
         <item>Bogot\u00e1</item>

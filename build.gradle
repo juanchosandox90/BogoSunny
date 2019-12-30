@@ -23,6 +23,10 @@ buildscript {
         espresso_version = "3.2.0"
         retrofit_version = "2.5.0"
         ok_http_version = "3.14.2"
+        iconics_version = "3.2.5"
+        ioniconns_version = "2.0.1.5@aar"
+        meteocons_version = "1.1.0.5@aar"
+        html_textview = "3.5"
 
         libs = [
                 //Kotlin
@@ -66,7 +70,14 @@ buildscript {
                 RetrofitAdapter     : ('com.squareup.retrofit2:adapter-rxjava2:' + retrofit_version),
                 RetrofitConverter   : ('com.squareup.retrofit2:converter-gson:' + retrofit_version),
                 //Okhttp3
-                Okhttp3             : ('com.squareup.okhttp3:logging-interceptor:' + ok_http_version)
+                Okhttp3             : ('com.squareup.okhttp3:logging-interceptor:' + ok_http_version),
+                //Icons
+                IconicsCore         : ('com.mikepenz:iconics-core:' + iconics_version),
+                IconicsView         : ('com.mikepenz:iconics-views:' + iconics_version),
+                Ionicons            : ('com.mikepenz:ionicons-typeface:' + ioniconns_version),
+                Meteocons           : ('com.mikepenz:meteocons-typeface:' + meteocons_version),
+                //HtmlTextView
+                HtmlTextView        : ('org.sufficientlysecure:html-textview:' + html_textview)
         ]
     }
     repositories {
