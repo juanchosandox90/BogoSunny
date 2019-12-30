@@ -5,6 +5,8 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import com.sandoval.bogosunny.R
+import java.text.SimpleDateFormat
+import java.util.*
 
 object CommonUtils {
 
@@ -18,5 +20,11 @@ object CommonUtils {
         progressDialog.setCancelable(false)
         progressDialog.setCanceledOnTouchOutside(false)
         return progressDialog
+    }
+
+    fun getTimeFromUnixTimeStamp(unixTimeStamp: Long): String {
+        val date = Date(unixTimeStamp * 1000L) // *1000 is to convert seconds to milliseconds
+        val simpleDateFormat = SimpleDateFormat("KK:mm a", Locale.ENGLISH)
+        return simpleDateFormat.format(date)
     }
 }

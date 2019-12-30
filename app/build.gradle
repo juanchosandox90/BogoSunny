@@ -74,6 +74,13 @@ dependencies {
     implementation libs.RetrofitConverter
     //Okhttp3
     implementation libs.Okhttp3
+    //Icons
+    implementation libs.IconicsCore
+    implementation libs.IconicsView
+    implementation libs.Ionicons
+    implementation libs.Meteocons
+    //HtmlTextView
+    implementation libs.HtmlTextView
 }
 
 apply plugin: 'com.google.gms.google-services'
