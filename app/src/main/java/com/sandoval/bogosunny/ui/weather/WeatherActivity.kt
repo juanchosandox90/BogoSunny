@@ -27,6 +27,7 @@ import com.sandoval.bogosunny.ui.about.AboutActivity
 import com.sandoval.bogosunny.ui.add_city.AddCityActivity
 import com.sandoval.bogosunny.ui.base.BaseActivity
 import com.sandoval.bogosunny.ui.saved_cities.SavedCitiesActivity
+import com.sandoval.bogosunny.ui.weather.city.CityWeatherFragment
 import com.sandoval.bogosunny.ui.weather.currentLocation.CurrentLocationWeatherFragment
 import com.sandoval.bogosunny.utils.AppConstants.LOCATION_PERMISSION_REQUEST
 import com.sandoval.bogosunny.utils.AppConstants.REQUEST_ADD_CITY
@@ -37,7 +38,10 @@ import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.toolbar
 import org.greenrobot.eventbus.EventBus
@@ -117,8 +121,24 @@ class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsRespon
     }
 
     private fun setupViewPager() {
+
         viewPagerAdapter.removeFragments()
         viewPagerAdapter.addFragment(CurrentLocationWeatherFragment.newInstance())
+
+        compositeDisposable.add(
+            Observable.defer { Observable.just(weatherViewModel.getSavedCities()) }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ cityList ->
+                    cityList.forEach {
+                        viewPagerAdapter.addFragment(CityWeatherFragment.newInstance(it.cityName))
+                    }
+                }, {
+                    Timber.e(it)
+                    showError(it.localizedMessage)
+                })
+        )
+
     }
 
     public override fun onResume() {
@@ -211,6 +231,18 @@ class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsRespon
                 Activity.RESULT_OK -> Timber.d("User Agreed to make required location settings changes. ")
                 Activity.RESULT_CANCELED -> {
                     checkLocationSettings()
+                }
+            }
+
+            REQUEST_ADD_CITY -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    setupViewPager()
+                }
+            }
+
+            REQUEST_REMOVE_CITY -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    setupViewPager()
                 }
             }
         }

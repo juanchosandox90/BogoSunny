@@ -38,11 +38,13 @@ abstract class BaseFragment : Fragment() {
     }
 
     fun showMessage(message: String?) {
-        //TODO: Show message message using baseActivity
+        if (baseActivity != null)
+            baseActivity?.showMessage(message)
     }
 
     fun showError(message: String?) {
-        //TODO: Show Error message using baseActivity
+        if (baseActivity != null)
+            baseActivity?.showError(message)
     }
 
     fun getBaseActivity(): BaseActivity? {

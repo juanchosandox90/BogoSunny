@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.os.Build
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.sandoval.bogosunny.utils.CommonUtils
@@ -41,5 +42,23 @@ open class BaseActivity : AppCompatActivity() {
             if (progressDialog?.isShowing == true)
                 progressDialog?.cancel()
         }
+    }
+
+    private fun displayMessage(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun displayError(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
+    fun showMessage(message: String?) {
+        if (message != null)
+            displayMessage(message)
+    }
+
+    fun showError(message: String?) {
+        if (message != null)
+            displayError(message)
     }
 }
