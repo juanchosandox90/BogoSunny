@@ -46,7 +46,7 @@ In MVVM, ViewModel exposes streams of events to which the Views can bind to. Bec
 
  ![Color Palette](color_palette.png)
  
-### Color Palette
+### Screenshots Application
 
 ![screenshoot 1](sc_01.JPG)
 ![screenshoot 2](sc_02.JPG)
