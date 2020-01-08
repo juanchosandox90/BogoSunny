@@ -93,12 +93,11 @@ class AddCityActivity : BaseActivity(), CityListAdapter.Callback {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     setResult(Activity.RESULT_OK)
-                    Timber.d("City Added: $city")
                     finish()
                 }, {
                     hideLoading()
                     if (it is SQLiteConstraintException) {
-                        Timber.e("This city is already added.")
+                        showError("This city is already added.")
                     } else {
                         Timber.e(it.localizedMessage)
                     }
