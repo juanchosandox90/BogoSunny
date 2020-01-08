@@ -81,6 +81,8 @@ dependencies {
     implementation libs.Meteocons
     //HtmlTextView
     implementation libs.HtmlTextView
+    //Preferences
+    implementation libs.Preferences
 }
 
 apply plugin: 'com.google.gms.google-services'

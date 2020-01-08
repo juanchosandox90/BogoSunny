@@ -27,6 +27,7 @@ buildscript {
         ioniconns_version = "2.0.1.5@aar"
         meteocons_version = "1.1.0.5@aar"
         html_textview = "3.5"
+        preferences_version = "1.1.0"
 
         libs = [
                 //Kotlin
@@ -77,7 +78,9 @@ buildscript {
                 Ionicons            : ('com.mikepenz:ionicons-typeface:' + ioniconns_version),
                 Meteocons           : ('com.mikepenz:meteocons-typeface:' + meteocons_version),
                 //HtmlTextView
-                HtmlTextView        : ('org.sufficientlysecure:html-textview:' + html_textview)
+                HtmlTextView        : ('org.sufficientlysecure:html-textview:' + html_textview),
+                // Preferences
+                Preferences         : ('androidx.preference:preference:' + preferences_version)
         ]
     }
     repositories {
