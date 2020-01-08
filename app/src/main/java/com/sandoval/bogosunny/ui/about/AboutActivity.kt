@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import com.sandoval.bogosunny.R
 import com.sandoval.bogosunny.ui.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_about.*
 import kotlinx.android.synthetic.main.toolbar.toolbar
 
 class AboutActivity : BaseActivity() {
@@ -25,6 +26,13 @@ class AboutActivity : BaseActivity() {
     private fun init() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        icon_attribution.setHtml("<div>App icon made by Juan Camilo Sandoval Devia</div>")
+
+        api_attribution.setHtml("Powered By <a href=\"https://openweathermap.org\" title=\"openWeatherMap\">OpenWeatherMap</a>")
+
+        widget_icon_attribution.setHtml("<div>Widget Icons made by <a href=\"https://www.flaticon.com/authors/good-ware\" title=\"Good Ware\">Good Ware</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a> is licensed by <a href=\"http://creativecommons.org/licenses/by/3.0/\" title=\"Creative Commons BY 3.0\" target=\"_blank\">CC 3.0 BY</a></div>")
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
