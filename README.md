@@ -46,7 +46,16 @@ In MVVM, ViewModel exposes streams of events to which the Views can bind to. Bec
 
  ![Color Palette](color_palette.png)
  
- ### License
+### Color Palette
+
+![screenshoot 1](sc_01.JPG)
+![screenshoot 2](sc_02.JPG)
+![screenshoot 3](sc_03.JPG)
+![screenshoot 4](sc_04.JPG)
+![screenshoot 6](sc_05.JPG)
+![screenshoot 6](sc_06.JPG)
+ 
+### License
 ```
    Copyright (C) 2020 Juan Camilo Sandoval Devia
 
