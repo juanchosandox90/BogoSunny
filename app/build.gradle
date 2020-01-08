@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -14,6 +16,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -21,15 +24,65 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    //Kotlin
+    implementation libs.Kotlin
+    //AppCompat
+    implementation libs.AppCompat
+    implementation libs.AndroidCore
+    implementation libs.AndroidLegacySupport
+    implementation libs.AndroidConstraint
+    implementation libs.AndroidMaterial
+    //Google
+    implementation libs.Lifecycle
+    kapt libs.LifecycleCompiler
+    implementation libs.GoogleLocation
+    implementation libs.GoogleAds
+    //Dagger
+    implementation libs.Dagger
+    implementation libs.DaggerAndroid
+    implementation libs.DaggerSupport
+    kapt libs.DaggerCompiler
+    kapt libs.DaggerProcessor
+    //Room
+    implementation libs.RoomRuntime
+    kapt libs.RoomCompiler
+    implementation libs.RoomRx
+    //Timber
+    implementation libs.Timber
+    //RX
+    implementation libs.RXJava
+    implementation libs.RXAndroid
+    //GreenRobot EventBus
+    implementation libs.GreenEventBus
+    //Firebase
+    implementation libs.FirebaseCore
+    //Testing
+    testImplementation libs.JUnit
+    androidTestImplementation libs.TestRunner
+    androidTestImplementation libs.EspressoCore
+    //Rettrofit
+    implementation libs.Retrofit
+    implementation libs.RetrofitAdapter
+    implementation libs.RetrofitConverter
+    //Okhttp3
+    implementation libs.Okhttp3
+    //Icons
+    implementation libs.IconicsCore
+    implementation libs.IconicsView
+    implementation libs.Ionicons
+    implementation libs.Meteocons
+    //HtmlTextView
+    implementation libs.HtmlTextView
+    //Preferences
+    implementation libs.Preferences
 }
+
+apply plugin: 'com.google.gms.google-services'

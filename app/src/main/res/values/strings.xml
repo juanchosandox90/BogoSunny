@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">BogoSunny</string>
+    <string name="app_name">Colo Sunny</string>
+    <string name="saved_cities_menu">Saved Cities</string>
+    <string name="about_title">About</string>
+    <string name="search_hint">Search</string>
+    <string name="rainy_string_main">Rain</string>
+    <string name="sunny_string_main">Sunny</string>
+
+    <string-array name="top_places">
+        <item>Bogot\u00e1</item>
+        <item>Medellin</item>
+        <item>Barranquilla</item>
+        <item>Cali</item>
+    </string-array>
 </resources>

@@ -1,15 +1,101 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    ext.kotlin_version = '1.3.61'
+    ext {
+        kotlin_version = '1.3.61'
+        appcompat_version = '1.1.0'
+        android_core_ktx_version = '1.1.0'
+        android_legacy_support = "1.0.0"
+        android_constraint_layout = "1.1.3"
+        android_material = "1.0.0"
+        lifecycle_version = '2.1.0'
+        dagger_version = "2.23.2"
+        room_version = "2.2.2"
+        timber_version = "4.7.1"
+        rx_java = "2.2.8"
+        rx_android = "2.1.1"
+        location_version = "17.0.0"
+        ads_version = "18.3.0"
+        green_robot_event_bus = "3.1.1"
+        firebase_version = "17.2.1"
+        junit_version = "4.12"
+        test_runner_version = "1.2.0"
+        espresso_version = "3.2.0"
+        retrofit_version = "2.5.0"
+        ok_http_version = "3.14.2"
+        iconics_version = "3.2.5"
+        ioniconns_version = "2.0.1.5@aar"
+        meteocons_version = "1.1.0.5@aar"
+        html_textview = "3.5"
+        preferences_version = "1.1.0"
+
+        libs = [
+                //Kotlin
+                Kotlin              : ("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"),
+                //AppCompat
+                AppCompat           : ('androidx.appcompat:appcompat:' + appcompat_version),
+                AndroidCore         : ("androidx.core:core-ktx:$android_core_ktx_version"),
+                AndroidLegacySupport: ('androidx.legacy:legacy-support-v4:' + android_legacy_support),
+                AndroidConstraint   : ('androidx.constraintlayout:constraintlayout:' + android_constraint_layout),
+                AndroidMaterial     : ('com.google.android.material:material:' + android_material),
+                //Google
+                Lifecycle           : ('androidx.lifecycle:lifecycle-extensions:' + lifecycle_version),
+                LifecycleCompiler   : ('androidx.lifecycle:lifecycle-compiler:' + lifecycle_version),
+                GoogleLocation      : ('com.google.android.gms:play-services-location:' + location_version),
+                GoogleAds           : ('com.google.android.gms:play-services-ads:' + ads_version),
+                //Dagger
+                Dagger              : ('com.google.dagger:dagger:' + dagger_version),
+                DaggerAndroid       : ('com.google.dagger:dagger-android:' + dagger_version),
+                DaggerSupport       : ('com.google.dagger:dagger-android-support:' + dagger_version),
+                DaggerCompiler      : ('com.google.dagger:dagger-compiler:' + dagger_version),
+                DaggerProcessor     : ('com.google.dagger:dagger-android-processor:' + dagger_version),
+                //Room
+                RoomRuntime         : ('androidx.room:room-runtime:' + room_version),
+                RoomCompiler        : ('androidx.room:room-compiler:' + room_version),
+                RoomRx              : ('androidx.room:room-rxjava2:' + room_version),
+                //Timber
+                Timber              : ('com.jakewharton.timber:timber:' + timber_version),
+                //RXJava
+                RXJava              : ('io.reactivex.rxjava2:rxjava:' + rx_java),
+                RXAndroid           : ('io.reactivex.rxjava2:rxandroid:' + rx_android),
+                //GreenRobot Event Bus
+                GreenEventBus       : ('org.greenrobot:eventbus:' + green_robot_event_bus),
+                //Firebase
+                FirebaseCore        : ('com.google.firebase:firebase-core:' + firebase_version),
+                //Testing
+                JUnit               : ('junit:junit:' + junit_version),
+                TestRunner          : ('androidx.test:runner:' + test_runner_version),
+                EspressoCore        : ('androidx.test.espresso:espresso-core:' + espresso_version),
+                //Rettrofit
+                Retrofit            : ('com.squareup.retrofit2:retrofit:' + retrofit_version),
+                RetrofitAdapter     : ('com.squareup.retrofit2:adapter-rxjava2:' + retrofit_version),
+                RetrofitConverter   : ('com.squareup.retrofit2:converter-gson:' + retrofit_version),
+                //Okhttp3
+                Okhttp3             : ('com.squareup.okhttp3:logging-interceptor:' + ok_http_version),
+                //Icons
+                IconicsCore         : ('com.mikepenz:iconics-core:' + iconics_version),
+                IconicsView         : ('com.mikepenz:iconics-views:' + iconics_version),
+                Ionicons            : ('com.mikepenz:ionicons-typeface:' + ioniconns_version),
+                Meteocons           : ('com.mikepenz:meteocons-typeface:' + meteocons_version),
+                //HtmlTextView
+                HtmlTextView        : ('org.sufficientlysecure:html-textview:' + html_textview),
+                // Preferences
+                Preferences         : ('androidx.preference:preference:' + preferences_version)
+        ]
+    }
     repositories {
         google()
         jcenter()
-        
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
+
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.2'
+        classpath 'com.android.tools.build:gradle:3.5.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.3.3'
+        classpath 'io.fabric.tools:gradle:1.29.0'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -19,7 +105,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+
     }
 }
 
