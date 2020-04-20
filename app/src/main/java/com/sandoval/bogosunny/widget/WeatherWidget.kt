@@ -155,10 +155,6 @@ class WeatherWidget : AppWidgetProvider() {
 
                     updateWidgetUI(currentWeather, views, appWidget, appWidgetManager)
 
-                    /*val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.ENGLISH)
-                    val currentDateAndTime = sdf.format(Date())
-                    Crashlytics.logException(Throwable("WIDGET_UPDATE : Called at : $currentDateAndTime"))*/
-
                 }, {
 
                     views?.setViewVisibility(R.id.temp, View.INVISIBLE)

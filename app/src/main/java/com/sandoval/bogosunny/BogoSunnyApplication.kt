@@ -3,7 +3,6 @@ package com.sandoval.bogosunny
 import android.app.Activity
 import android.app.Application
 import androidx.lifecycle.LifecycleObserver
-import com.google.android.gms.ads.MobileAds
 import com.sandoval.bogosunny.di.component.DaggerApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -21,8 +20,6 @@ class BogoSunnyApplication : Application(), HasActivityInjector, LifecycleObserv
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
-
-        MobileAds.initialize(this, "ca-app-pub-4147577574981183~9115421975")
 
         DaggerApplicationComponent
             .builder()

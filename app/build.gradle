@@ -40,11 +40,11 @@ dependencies {
     implementation libs.AndroidLegacySupport
     implementation libs.AndroidConstraint
     implementation libs.AndroidMaterial
-    //Google
+    //Lifecycle
     implementation libs.Lifecycle
     kapt libs.LifecycleCompiler
-    implementation libs.GoogleLocation
-    implementation libs.GoogleAds
+    //Huawei Location Kit
+    implementation libs.HuaweLocation
     //Dagger
     implementation libs.Dagger
     implementation libs.DaggerAndroid
@@ -62,8 +62,6 @@ dependencies {
     implementation libs.RXAndroid
     //GreenRobot EventBus
     implementation libs.GreenEventBus
-    //Firebase
-    implementation libs.FirebaseCore
     //Testing
     testImplementation libs.JUnit
     androidTestImplementation libs.TestRunner
@@ -84,5 +82,4 @@ dependencies {
     //Preferences
     implementation libs.Preferences
 }
-
-apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.huawei.agconnect'
