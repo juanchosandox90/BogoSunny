@@ -14,8 +14,7 @@ buildscript {
         timber_version = "4.7.1"
         rx_java = "2.2.8"
         rx_android = "2.1.1"
-        location_version = "17.0.0"
-        ads_version = "18.3.0"
+        huawei_location = "4.0.2.300"
         green_robot_event_bus = "3.1.1"
         firebase_version = "17.2.1"
         junit_version = "4.12"
@@ -38,11 +37,10 @@ buildscript {
                 AndroidLegacySupport: ('androidx.legacy:legacy-support-v4:' + android_legacy_support),
                 AndroidConstraint   : ('androidx.constraintlayout:constraintlayout:' + android_constraint_layout),
                 AndroidMaterial     : ('com.google.android.material:material:' + android_material),
-                //Google
+                //Huawei HMS
+                HuaweLocation       : ('com.huawei.hms:location:' + huawei_location),
                 Lifecycle           : ('androidx.lifecycle:lifecycle-extensions:' + lifecycle_version),
                 LifecycleCompiler   : ('androidx.lifecycle:lifecycle-compiler:' + lifecycle_version),
-                GoogleLocation      : ('com.google.android.gms:play-services-location:' + location_version),
-                GoogleAds           : ('com.google.android.gms:play-services-ads:' + ads_version),
                 //Dagger
                 Dagger              : ('com.google.dagger:dagger:' + dagger_version),
                 DaggerAndroid       : ('com.google.dagger:dagger-android:' + dagger_version),
@@ -60,8 +58,6 @@ buildscript {
                 RXAndroid           : ('io.reactivex.rxjava2:rxandroid:' + rx_android),
                 //GreenRobot Event Bus
                 GreenEventBus       : ('org.greenrobot:eventbus:' + green_robot_event_bus),
-                //Firebase
-                FirebaseCore        : ('com.google.firebase:firebase-core:' + firebase_version),
                 //Testing
                 JUnit               : ('junit:junit:' + junit_version),
                 TestRunner          : ('androidx.test:runner:' + test_runner_version),
@@ -86,16 +82,14 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven {
-            url 'https://maven.fabric.io/public'
-        }
+        mavenCentral()
+        maven { url 'http://developer.huawei.com/repo/' } // HUAWEI Maven repository
 
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.6.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.google.gms:google-services:4.3.3'
-        classpath 'io.fabric.tools:gradle:1.29.0'
+        classpath 'com.huawei.agconnect:agcp:1.2.0.300'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -105,7 +99,8 @@ allprojects {
     repositories {
         google()
         jcenter()
-
+        mavenCentral()
+        maven { url 'http://developer.huawei.com/repo/' } // HUAWEI Maven repository
     }
 }
 

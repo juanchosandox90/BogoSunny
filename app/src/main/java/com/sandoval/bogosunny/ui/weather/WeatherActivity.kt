@@ -16,11 +16,11 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.*
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.android.gms.tasks.Task
+import com.huawei.hmf.tasks.OnFailureListener
+import com.huawei.hmf.tasks.OnSuccessListener
+import com.huawei.hmf.tasks.Task
+import com.huawei.hms.common.ResolvableApiException
+import com.huawei.hms.location.*
 import com.sandoval.bogosunny.R
 import com.sandoval.bogosunny.ViewModelFactory
 import com.sandoval.bogosunny.ui.about.AboutActivity
