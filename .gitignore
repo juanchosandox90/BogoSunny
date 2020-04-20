@@ -13,6 +13,7 @@
 .externalNativeBuild
 .cxx
 app/google-services.json
-/app/bogosunny.jks
-/app/agconnect-services.json
-/app/release/
+app/release/output.json
+app/release/app-release.apk
+app/bogosunny.jks
+app/agconnect-services.json
