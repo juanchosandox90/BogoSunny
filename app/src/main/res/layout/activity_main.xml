@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:hwads="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -68,6 +69,21 @@
 
         </FrameLayout>
 
+        <RelativeLayout
+            android:id="@+id/root_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.huawei.hms.ads.banner.BannerView
+                android:id="@+id/hw_banner_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                hwads:adId="f3vw9cr1vb"
+                hwads:bannerSize="BANNER_SIZE_360_57" />
+
+        </RelativeLayout>
+
+
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -79,9 +95,9 @@
         android:layout_marginTop="@dimen/margin_50dp"
         android:clickable="true"
         android:focusable="true"
-        app:maxImageSize="56dp"
         app:backgroundTint="@color/sun_color"
-        app:fabSize="normal" />
+        app:fabSize="normal"
+        app:maxImageSize="56dp" />
 
     <include
         android:id="@+id/toolbar"

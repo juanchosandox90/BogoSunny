@@ -14,7 +14,7 @@ buildscript {
         timber_version = "4.7.1"
         rx_java = "2.2.8"
         rx_android = "2.1.1"
-        huawei_location = "4.0.2.300"
+        huawei_location = "5.0.0.301"
         green_robot_event_bus = "3.1.1"
         firebase_version = "17.2.1"
         junit_version = "4.12"
@@ -27,6 +27,7 @@ buildscript {
         meteocons_version = "1.1.0.5@aar"
         html_textview = "3.5"
         preferences_version = "1.1.0"
+        huawei_ads = '13.4.32.300'
 
         libs = [
                 //Kotlin
@@ -39,6 +40,7 @@ buildscript {
                 AndroidMaterial     : ('com.google.android.material:material:' + android_material),
                 //Huawei HMS
                 HuaweLocation       : ('com.huawei.hms:location:' + huawei_location),
+                HuaweiAds           : ('com.huawei.hms:ads-lite:' + huawei_ads),
                 Lifecycle           : ('androidx.lifecycle:lifecycle-extensions:' + lifecycle_version),
                 LifecycleCompiler   : ('androidx.lifecycle:lifecycle-compiler:' + lifecycle_version),
                 //Dagger
@@ -87,9 +89,9 @@ buildscript {
 
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.2'
+        classpath 'com.android.tools.build:gradle:4.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.huawei.agconnect:agcp:1.2.0.300'
+        classpath 'com.huawei.agconnect:agcp:1.3.1.300'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

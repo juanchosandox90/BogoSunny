@@ -7,14 +7,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.sandoval.bogosunny"
         minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 30
+        versionCode 2
+        versionName "1.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
@@ -43,8 +43,9 @@ dependencies {
     //Lifecycle
     implementation libs.Lifecycle
     kapt libs.LifecycleCompiler
-    //Huawei Location Kit
+    //Huawei Kits
     implementation libs.HuaweLocation
+    implementation libs.HuaweiAds
     //Dagger
     implementation libs.Dagger
     implementation libs.DaggerAndroid

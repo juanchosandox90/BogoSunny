@@ -246,7 +246,7 @@ class WeatherWidget : AppWidgetProvider() {
         super.onReceive(context, intent)
         if (ACTION_WEATHER_WIDGET == intent?.action) {
             if (intent.getStringExtra(CITY) != null && intent.getStringExtra(CITY) != "") {
-                getWeatherData(intent.getStringExtra(CITY), context)
+                getWeatherData(intent.getStringExtra(CITY)!!, context)
             }
         }
     }

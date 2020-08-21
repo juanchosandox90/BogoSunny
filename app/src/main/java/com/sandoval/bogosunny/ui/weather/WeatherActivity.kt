@@ -13,12 +13,17 @@ import android.os.Bundle
 import android.util.DisplayMetrics
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.huawei.hmf.tasks.OnFailureListener
 import com.huawei.hmf.tasks.OnSuccessListener
 import com.huawei.hmf.tasks.Task
+import com.huawei.hms.ads.AdParam
+import com.huawei.hms.ads.BannerAdSize
+import com.huawei.hms.ads.HwAds
+import com.huawei.hms.ads.banner.BannerView
 import com.huawei.hms.common.ResolvableApiException
 import com.huawei.hms.location.*
 import com.sandoval.bogosunny.R
@@ -46,7 +51,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.toolbar
 import org.greenrobot.eventbus.EventBus
 import timber.log.Timber
-import java.lang.Exception
 import javax.inject.Inject
 
 class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsResponse>,
@@ -74,7 +78,7 @@ class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsRespon
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        HwAds.init(this)
         weatherViewModel = ViewModelProviders.of(
             this@WeatherActivity,
             viewModelFactory
@@ -83,6 +87,17 @@ class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsRespon
     }
 
     private fun init() {
+
+        val bannerView = BannerView(this)
+        // testw6vs28auh3 indicates a dedicated test ad slot ID.
+        bannerView.adId = "f3vw9cr1vb"
+        bannerView.bannerAdSize = BannerAdSize.BANNER_SIZE_360_57
+        val adParam: AdParam = AdParam.Builder().build()
+        bannerView.loadAd(adParam)
+        // Add BannerView to the layout.
+        val rootView: RelativeLayout = findViewById(R.id.root_view)
+        rootView.addView(bannerView)
+
         setSupportActionBar(toolbar)
         supportActionBar?.title = ""
         if (ThemeUtils.isNight())
@@ -156,8 +171,7 @@ class WeatherActivity : BaseActivity(), OnSuccessListener<LocationSettingsRespon
                 arrayOf(
                     android.Manifest.permission.ACCESS_FINE_LOCATION,
                     android.Manifest.permission.ACCESS_COARSE_LOCATION
-                )
-                , LOCATION_PERMISSION_REQUEST
+                ), LOCATION_PERMISSION_REQUEST
             )
         }
     }
